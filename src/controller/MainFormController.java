@@ -11,15 +11,18 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class MainFormController {
 
+    public static final int NAV_ICON_NONE=0;
+    public static final int NAV_ICON_BACK=1;
+    public static final int NAV_ICON_HOME=2;
     public ImageView imgClose;
     public ImageView imgMinimize;
     public AnchorPane pneAppBar;
     public Label lblTitle;
     public AnchorPane pneStage;
+    public ImageView imgNav;
     private double xMousePos;
     private double yMousePos;
 
@@ -28,11 +31,28 @@ public class MainFormController {
 
     }
 
-    public void navigate(String url) {
+    public void navigate(String title,String url,int icon) {
         try {
+            switch (icon){
+                case NAV_ICON_NONE:
+                    imgNav.setVisible(false);
+                    break;
+                case NAV_ICON_BACK:
+                    imgNav.setImage(new Image("/view/assets/Vector-1.png"));
+                    break;
+                case NAV_ICON_HOME:
+                    imgNav.setImage(new Image("/view/assets/Vector-3.png"));
+                    break;
+            }
             Parent root = FXMLLoader.load(this.getClass().getResource(url));
+            lblTitle.setText(title);
             pneStage.getChildren().clear();
             pneStage.getChildren().add(root);
+            Stage primaryStage = (Stage) pneStage.getScene().getWindow();
+            Platform.runLater(()->{
+                primaryStage.sizeToScene();
+                primaryStage.centerOnScreen();
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
