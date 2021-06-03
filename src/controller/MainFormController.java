@@ -2,6 +2,7 @@ package controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class MainFormController {
 
@@ -26,9 +28,11 @@ public class MainFormController {
 
     }
 
-    public void navigate() {
+    public void navigate(String url) {
         try {
-            pneStage.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/HomeForm.fxml")));
+            Parent root = FXMLLoader.load(this.getClass().getResource(url));
+            pneStage.getChildren().clear();
+            pneStage.getChildren().add(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
