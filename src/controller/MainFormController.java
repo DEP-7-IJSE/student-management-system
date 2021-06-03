@@ -21,10 +21,18 @@ public class MainFormController {
     private double xMousePos;
     private double yMousePos;
 
-    public void initialize() throws IOException {
+    public void initialize() {
         initWindow();
-        pneStage.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/HomeForm.fxml")));
-        
+        navigate();
+
+    }
+
+    public void navigate() {
+        try {
+            pneStage.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/HomeForm.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initWindow() {
