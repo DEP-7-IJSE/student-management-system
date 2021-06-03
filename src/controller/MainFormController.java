@@ -23,7 +23,6 @@ public class MainFormController {
 
     public void initialize() {
         initWindow();
-        navigate();
 
     }
 
