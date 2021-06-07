@@ -1,16 +1,10 @@
 package controller;
 
 import com.jfoenix.controls.JFXRippler;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import util.NavActionListener;
 
 import java.io.IOException;
 
@@ -21,7 +15,7 @@ public class HomeFormController {
     public JFXRippler rprSearchStudents;
     public AnchorPane pneSearchStudents;
 
-    public void initialize(){
+    public void initialize() {
         rprAddNewStudent.setControl(pneAddNewStudent);
         rprSearchStudents.setControl(pneSearchStudents);
         pneAddNewStudent.setFocusTraversable(true);
@@ -63,6 +57,6 @@ public class HomeFormController {
 
     private void navigate(String title, String url) {
         MainFormController ctrl = (MainFormController) pneSearchStudents.getScene().getUserData();
-        ctrl.navigate(title, url, MainFormController.NAV_ICON_BACK, () -> ctrl.navigate("Student Managemant System","/view/HomeForm.fxml",MainFormController.NAV_ICON_HOME));
+        ctrl.navigate(title, url, MainFormController.NAV_ICON_BACK, () -> ctrl.navigate("Student Managemant System", "/view/HomeForm.fxml", MainFormController.NAV_ICON_NONE));
     }
 }

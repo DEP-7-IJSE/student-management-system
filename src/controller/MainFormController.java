@@ -41,15 +41,18 @@ public class MainFormController {
         try {
             imgNav.setVisible(true);
             this.icon=icon;
+            if(icon == 0){
+
+            }
             this.navActionListener=navActionListener;
             switch (icon){
                 case NAV_ICON_NONE:
-                    imgNav.setVisible(false);
+                    //imgNav.setVisible(false);
                     imgNav.setUserData(null);
                     break;
                 case NAV_ICON_HOME:
-                    imgNav.setImage(new Image("/view/assets/Vector-1.png"));
-                    imgNav.setUserData(new Image("/view/assets/Vector.png"));
+                    imgNav.setImage(new Image("/view/assets/Vector.png"));
+                    imgNav.setUserData(new Image("/view/assets/Vector-1.png"));
                     break;
                 case NAV_ICON_BACK:
                     imgNav.setImage(new Image("/view/assets/Vector-3.png"));
@@ -106,7 +109,7 @@ public class MainFormController {
     }
 
     private void swapNavIcon(){
-        if(icon != NAV_ICON_NONE) {
+        if(icon != NAV_ICON_NONE && navActionListener != null) {
             Image temp = imgNav.getImage();
             imgNav.setImage((Image) imgNav.getUserData());
             imgNav.setUserData(temp);
